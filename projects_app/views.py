@@ -12,6 +12,7 @@ def ProjectsView(request):
     context = {'projects': data}
     return render(request, 'projects.html', context=context)
 
+@login_required(login_url='login')
 def ProjectView(request, pk):
     data = Project.objects.get(pk=pk)
     context = {'project': data}
@@ -24,7 +25,9 @@ def CreateProjectView(request):
     if request.method == 'POST':
         data = ProjectForm(request.POST, request.FILES)
         if data.is_valid():
-            data.save()
+            form = data.save(commit=False)
+            form.owner = request.user.profile
+            form.save()
             return redirect('projects')
     context = {'form': form}
     return render(request, 'project-form.html', context=context)

@@ -10,7 +10,7 @@ class ProjectForm(ModelForm):
         fields = ['title', 'featured_image', 'description', 'demo_link', 'source_link', 'vote_total', 'vote_ratio', 'tags']
         
         widgets = {
-            'tags': forms.CheckboxSelectMultiple
+            'tags': forms.CheckboxSelectMultiple,
         }
     def __init__(self, *args, **kwargs):
         super(ProjectForm, self).__init__(*args, **kwargs)

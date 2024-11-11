@@ -7,7 +7,7 @@ import uuid
 class Project(models.Model):
     owner = models.ForeignKey(Profile, null=True, blank=True, on_delete=models.SET_NULL)
     title = models.CharField(max_length=100)
-    featured_image = models.ImageField(null=True, blank=True, default='default.jpg')
+    featured_image = models.ImageField(null=True, blank=True,upload_to='projects/', default='projects/default.jpg')
     description = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField('Tag', blank=True)
     vote_total = models.IntegerField(default=0, null=True, blank=True)
