@@ -8,7 +8,7 @@ urlpatterns = [
     path('<str:pk>', ProjectView, name='project'),
     path('create/', CreateProjectView, name='create-project'),
     path('update/<str:pk>', UpdateProjectView, name ='update-project'),
-    path('dalete/<str:pk>', DeleteProjectView, name ='delete-project')
+    path('dalete/<str:pk>', DeleteProjectView, name ='delete-project'),
     
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
